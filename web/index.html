@@ -28,28 +28,36 @@
 
   <title>web_scroll</title>
   <link rel="manifest" href="manifest.json">
+
+
+  <style>
+    body {
+      height: 500vh !important;
+      position: static !important; 
+      overflow-y: scroll !important;
+      overflow-x: hidden !important;
+      touch-action: pan-y !important;
+    }
+    ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+    }
+
+    .scrollable {
+      position: fixed !important;
+      top: 50vh  !important;
+      left: 50vw  !important;
+      max-width: 100vw  !important;
+      max-height: 100vh  !important;
+      transform: translate(-50vw, -50vh)  !important;
+
+    }
+  </style>
+
 </head>
 <body>
-  <div class="scrollable" style="
-    overflow: auto;
-    height: 100%;
-    width: 100%;
-    background-color: green;
-">
-<div style="
-    height: 100%;
-    background-color: blue;
-    width: 100%;
-">
 
-</div>
-
-<div style="
-    height: 100%;
-    background-color: red;
-    width: 100%;
-">
-</div></div>
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->

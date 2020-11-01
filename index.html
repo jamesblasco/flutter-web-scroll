@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html style="overflow: hidden">
+<html>
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -21,29 +21,53 @@
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black">
   <meta name="apple-mobile-web-app-title" content="web_scroll">
+  <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
-  <meta flt-viewport="" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="favicon.png"/>
+
   <title>web_scroll</title>
+  <link rel="manifest" href="manifest.json">
+
+
+  <style>
+    body {
+      height: 500vh !important;
+      position: static !important; 
+      overflow-y: scroll !important;
+      overflow-x: hidden !important;
+      touch-action: pan-y !important;
+    }
+    ::-webkit-scrollbar {
+    width: 0px;
+    height: 0px;  /* Remove scrollbar space */
+    background: transparent;  /* Optional: just make scrollbar invisible */
+    }
+
+    .scrollable {
+      position: fixed !important;
+      top: 50vh  !important;
+      left: 50vw  !important;
+      max-width: 100vw  !important;
+      max-height: 100vh  !important;
+      transform: translate(-50vw, -50vh)  !important;
+
+    }
+  </style>
 
 </head>
-<body spellcheck="false" style="position: fixed; top: 0px; right: 0px; bottom: 0px; left: 0px; overflow: scroll; padding: 0px; margin: 0px; user-select: none; touch-action: pan-y; font: 14px sans-serif; color: red;">
-  
-<div style="
-height: 100vh;
-background-color: blue;
-width: 100vw
-">
+<body>
 
-</div>
-
-<div style="
-height: 100vh;
-background-color: red;
-width: 100vw;
-">
   <!-- This script installs service_worker.js to provide PWA functionality to
        application. For more information, see:
        https://developers.google.com/web/fundamentals/primers/service-workers -->
-  
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('flutter-first-frame', function () {
+        navigator.serviceWorker.register('flutter_service_worker.js?v=1971557911');
+      });
+    }
+  </script>
+  <script src="main.dart.js" type="application/javascript"></script>
 </body>
 </html>
